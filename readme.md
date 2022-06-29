@@ -39,6 +39,19 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 ## Listado de endpoint
 -GET /api/customers?pageSize=[pageSize]&page=[page]
+-GET /api/customers/email
+body:
+{
+    "email": "lscott@gmail.com"
+}
+-GET /api/customers/accounts
+-GET /api/customers/name
+body:
+{
+    "name": "Christopher Watson"
+}
+
+-GET /api/accounts/limit
 
 
 
