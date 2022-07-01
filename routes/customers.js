@@ -10,4 +10,17 @@ router.get('/', async (req, res) => {
     res.json(await controller.getAllCustomers(pageSize, page));
 });
 
+router.get('/getCustumerXmail/:email', async (req, res)=> {
+    const userEmail = await controller.getCustumerXmail(req.params.email)
+    res.json(userEmail)
+});
+
+router.get('/getMasCuentas/',async (req, res)=> {
+    
+    const userCuentas = await controller.getCuentas()
+    res.json(userCuentas)
+})
+
+
+
 module.exports = router;

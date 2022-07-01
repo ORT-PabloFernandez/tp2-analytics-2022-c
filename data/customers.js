@@ -10,6 +10,32 @@ async function getAllCustomers(pageSize, page){
                         .find({}).limit(pageSize).skip(pageSize * page)
                         .toArray();    
     return customers;
-}
+};
 
-module.exports = {getAllCustomers};
+
+
+async function getCustumerXmail(mail){
+    const connectiondb = await conn.getConnection();
+    const customer = await connectiondb
+                            .db(DATABASE)
+                            .collection(CUSTOMERS)
+                            .find({email: mail})
+                            .toArray();
+
+                            return customer
+                            
+};
+
+ async function getCuentas(){
+    const connectiondb = await conn.getConnection();
+    const customer = await connectiondb
+                            .db(DATABASE)
+                            .collection(CUSTOMERS)
+                            .find({accounts:{$size: 4}})
+                            .toArray();
+
+                            return customer
+                            
+};
+
+module.exports = {getAllCustomers,getCustumerXmail,getCuentas};
