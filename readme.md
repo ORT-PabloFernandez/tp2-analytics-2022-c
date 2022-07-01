@@ -39,8 +39,11 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 ## Listado de endpoint
 -GET /api/customers?pageSize=[pageSize]&page=[page]
-
-
+-GET /api/customers/getAllAccounts/?pageSize=[pageSize]&page=[page]
+-GET /api/customers/getCustomerByEmail/:email/?pageSize=[pageSize]&page=[page]
+-GET /api/customers/customersAccount/?pageSize=[pageSize]&page=[page]
+-GET /api/customers/accountLimit/?pageSize=[pageSize]&page=[page]
+-GET /api/customers/customersAccount10000/?pageSize=[pageSize]&page=[page]
 
 
 
