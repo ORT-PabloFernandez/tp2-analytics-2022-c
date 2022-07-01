@@ -10,4 +10,18 @@ router.get('/', async (req, res) => {
     res.json(await controller.getAllCustomers(pageSize, page));
 });
 
+router.get('/email/:email', async (req, res) => {
+   
+    
+    res.json(await controller.getForEmail(req.params.email));
+});
+
+
+router.get('/MoreFourAccounts/', async (req, res) => {
+   
+    
+    res.json(await controller.getMoreFourAccounts());
+});
+
+
 module.exports = router;

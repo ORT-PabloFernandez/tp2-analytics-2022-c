@@ -12,4 +12,31 @@ async function getAllCustomers(pageSize, page){
     return customers;
 }
 
-module.exports = {getAllCustomers};
+async function getForEmail(email){
+    const connectiondb = await conn.getConnection();
+    const customers = await connectiondb
+                        .db(DATABASE)
+                        .collection(CUSTOMERS)
+                        .findOne({email : email})    
+    return customers;
+}
+
+async function getMoreFourAccounts() {
+
+    const connectiondb = await conn.getConnection();
+    const clientes = await connectiondb
+                        .db(DATABASE)
+                        .collection(CUSTOMERS)
+                        .find({})
+                        .toArray();
+
+
+return clientes.filter(clientes => clientes.accounts.length >= 4);
+
+
+
+}
+
+
+
+module.exports = {getAllCustomers,getForEmail,getMoreFourAccounts};

@@ -40,6 +40,16 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 -GET /api/customers?pageSize=[pageSize]&page=[page]
 
+1) -GET api/customers/email/scott50@yahoo.com - getForEmail
+
+2) -GET api/customers/MoreFourAccounts/ - getMoreFourAccounts
+
+3) -GET api/accounts/accountLimit - getWhitLimit
+
+4) -GET api/accounts/customersLimit/ - getCustomerWhitLimit
+
+
+
 
 
 
