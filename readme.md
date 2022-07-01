@@ -40,6 +40,11 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 -GET /api/customers?pageSize=[pageSize]&page=[page]
 
+http://localhost:3000/api/customers/getMasCuentas/
+http://localhost:3000/api/customers/getCustumerXmail/ptaylor@hotmail.com
+
+
+
 
 
 
