@@ -12,4 +12,11 @@ async function getConnection(){
     return instance;
 }
 
-module.exports = {getConnection};
+async function getConnectionAc(){
+    if(instance == null){
+        instance = await client.connect();
+    }
+    return instance;
+}
+
+module.exports = {getConnection, getConnectionAc};
