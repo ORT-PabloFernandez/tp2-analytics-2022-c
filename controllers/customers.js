@@ -4,4 +4,14 @@ async function getAllCustomers(pageSize, page){
     return movies.getAllCustomers(pageSize, page);
 }
 
-module.exports = {getAllCustomers};
+
+async function getCustomerPorEmail(email){{
+    return movies.getCustomerPorEmail(email);
+}}
+
+async function getCustomersCuatroCuentas(cantcuentas){
+    return movies.getCustomerCuatroCuentas(cantcuentas);
+} 
+
+
+module.exports = {getAllCustomers,getCustomerPorEmail,getCustomersCuatroCuentas};
