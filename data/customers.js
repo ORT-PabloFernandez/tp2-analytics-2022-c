@@ -19,6 +19,7 @@ async function getCustommerByEmail(email) {
   const customers = await connectiondb
     .db(DATABASE)
     .collection(CUSTOMERS)
+    .find({ email: email })
     .toArray();
   return customers;
 }
