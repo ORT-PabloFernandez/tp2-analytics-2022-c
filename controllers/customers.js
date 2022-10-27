@@ -12,4 +12,13 @@ async function moreAccountsThan(acountCount) {
   return movies.moreAccountsThan(acountCount);
 }
 
-module.exports = { getAllCustomers, getCustommerByEmail, moreAccountsThan };
+async function getClientsByLimit(limit) {
+  return movies.getClientsByLimit(limit);
+}
+
+module.exports = {
+  getAllCustomers,
+  getCustommerByEmail,
+  moreAccountsThan,
+  getClientsByLimit,
+};

@@ -34,4 +34,23 @@ async function moreAccountsThan(number) {
   return customers;
 }
 
-module.exports = { getAllCustomers, getCustommerByEmail, moreAccountsThan };
+async function getClientsByLimit(acounts) {
+  // console.log("acounts ")
+  const ids = acounts.map((item) => item.account_id);
+
+  console.log("ids : ", ids);
+  const connectiondb = await conn.getConnection();
+  const customers = await connectiondb
+    .db(DATABASE)
+    .collection(CUSTOMERS)
+    .find({ accounts: { $in: ids } })
+    .toArray();
+  return customers;
+}
+
+module.exports = {
+  getAllCustomers,
+  getCustommerByEmail,
+  moreAccountsThan,
+  getClientsByLimit,
+};
