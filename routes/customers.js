@@ -21,4 +21,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/more_accounts/:count", async (req, res) => {
+  const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 0;
+  const page = req.query.page ? parseInt(req.query.page) : 0;
+
+  console.log("req.query : ", req.path.split("/").pop());
+
+  const getMoreAcounts = req.path.split("/").pop()
+    ? parseInt(req.path.split("/").pop())
+    : 0;
+
+  res.json(await controller.moreAccountsThan(getMoreAcounts));
+});
+
 module.exports = router;
