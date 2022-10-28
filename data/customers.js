@@ -45,7 +45,7 @@ async function getCustomerWithLimit() {
     .find({})
     .toArray();
   let customersFilter = [];
-  const accountsWithLimit = await dataAccounts.getAllAccountsWithLimit();
+  let accountsWithLimit = await dataAccounts.getAllAccountsWithLimit();
 
   let index = 0;
   while (index < customers.length) {
@@ -60,7 +60,9 @@ async function getCustomerWithLimit() {
 
         if (account == account2) {
           customersFilter.push(customer);
-          accountsWithLimit.pop(accountsWithLimit[index3]);
+          accountsWithLimit = accountsWithLimit.filter(
+            (aw) => aw.account_id != accountsWithLimit[index3].account_id
+          );
           tieneCuentaConLimite = true;
         }
         index3++;
@@ -71,6 +73,7 @@ async function getCustomerWithLimit() {
 
     index++;
   }
+
   return customersFilter;
 }
 
