@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
   res.json(await controller.getAllCustomers(pageSize, page));
 });
 
-router.get("/customerById/:idCostumer", async (req, res) => {
-  res.json(await controller.getCustomerById(req.params.idCostumer));
+router.get("/customerById/:email", async (req, res) => {
+  res.json(await controller.getCustomerByEmail(req.params.email));
 });
 
 router.get("/accounts", async (req, res) => {
@@ -21,4 +21,8 @@ router.get("/accounts", async (req, res) => {
 router.get("/accountsByLimit", async (req, res) => {
   res.json(await controller.getCustomersAccounts());
 });
+router.get("/transactions/:email", async (req, res) => {
+  res.json(await controller.getCustomerTransactions(req.params.email));
+});
+
 module.exports = router;

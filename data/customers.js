@@ -3,6 +3,7 @@ const conn = require("./conn");
 const DATABASE = "sample_analytics";
 const CUSTOMERS = "customers";
 const account = require("./accounts");
+const transaction = require("./transactions");
 
 async function getAllCustomers(pageSize, page) {
   const connectiondb = await conn.getConnection();
@@ -16,13 +17,13 @@ async function getAllCustomers(pageSize, page) {
   return customers;
 }
 
-async function getCustomerById(id) {
+async function getCustomerByEmail(email) {
   const connection = await conn.getConnection();
 
   const costumer = await connection
     .db(DATABASE)
     .collection(CUSTOMERS)
-    .findOne({ _id: new ObjectID(`${id}`) });
+    .findOne({ email: email });
   console.log(costumer);
   return costumer;
 }
@@ -72,9 +73,24 @@ async function getCustomersAccounts() {
   return array;
 }
 
+async function getCustomerTransactions(email) {
+  const costumer = await getCustomerByEmail(email);
+  console.log(costumer);
+  let array = [];
+  await Promise.all(
+    await costumer.accounts.map(async (account) => {
+      console.log(account);
+      array.push(await transaction.getTransactionByAccountId(account));
+    })
+  );
+
+  return array;
+}
+
 module.exports = {
   getAllCustomers,
-  getCustomerById,
+  getCustomerByEmail,
   getCostumerByAccounts,
   getCustomersAccounts,
+  getCustomerTransactions,
 };
