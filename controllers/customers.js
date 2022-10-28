@@ -1,7 +1,24 @@
-const movies = require('../data/customers');
+const customers = require("../data/customers");
 
-async function getAllCustomers(pageSize, page){    
-    return movies.getAllCustomers(pageSize, page);
+async function getAllCustomers(pageSize, page) {
+  return customers.getAllCustomers(pageSize, page);
 }
 
-module.exports = {getAllCustomers};
+async function getSingleCustomer(email) {
+  return customers.getSingleCustomer(email);
+}
+
+async function getCustomersWithFourAccounts() {
+  return customers.getCustomersWithFourAccounts();
+}
+
+async function getAllCustomersWithLimitedAccounts() {
+  return customers.getAllCustomersWithLimitedAccounts();
+}
+
+module.exports = {
+  getAllCustomers,
+  getSingleCustomer,
+  getCustomersWithFourAccounts,
+  getAllCustomersWithLimitedAccounts,
+};
