@@ -40,7 +40,17 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 -GET /api/customers?pageSize=[pageSize]&page=[page]
 
+-GET /api/customers?email=[email]
 
+-GET /api/customers/accounts?amount=[amount]?pageSize=[pageSize]&page=[page]
+(amount=4 para tener customers con 4 accounts)
+
+-GET /api/accounts/limitOneThousand?pageSize=[pageSize]&page=[page]
+
+-GET /api/customers/accounts/limit/10000?pageSize=[pageSize]&page=[page]
+
+-GET /api/customers/:id/accounts/transactions
+(id=5ca4bbcea2dd94ee58162c23 para ver todas las transacciones de Christopher Watson)
 
 
 
