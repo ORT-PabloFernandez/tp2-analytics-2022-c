@@ -24,6 +24,16 @@ async function getCustommerByEmail(email) {
   return customers;
 }
 
+async function getCustommerByName(nombre) {
+  const connectiondb = await conn.getConnection();
+  const customers = await connectiondb
+    .db(DATABASE)
+    .collection(CUSTOMERS)
+    .find({ name: nombre })
+    .toArray();
+  return customers;
+}
+
 async function moreAccountsThan(number) {
   const connectiondb = await conn.getConnection();
   const customers = await connectiondb
@@ -53,4 +63,5 @@ module.exports = {
   getCustommerByEmail,
   moreAccountsThan,
   getClientsByLimit,
+  getCustommerByName,
 };

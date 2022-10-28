@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/customers");
 const accounts = require("../controllers/acountsController");
+const transactions = require("../controllers/transactionsCotroller");
 
 router.get("/", async (req, res) => {
   const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 0;
@@ -47,6 +48,33 @@ router.get("/acount_limit/", async (req, res) => {
   const acountResult = await accounts.getAcountByLimit(limit);
 
   res.json(await controller.getClientsByLimit(acountResult));
+});
+
+//el nombre esta dinamico para poder buscar de distintos users
+router.get("/transactions_by_name/:name", async (req, res) => {
+  const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 0;
+  const page = req.query.page ? parseInt(req.query.page) : 0;
+
+  const name = req.path.split("/").pop() ? req.path.split("/").pop() : "";
+  const nameRemplace = name.replace("%20", " ");
+
+  const customer = await controller.getCustommerByName(nameRemplace);
+
+  if (customer.length > 1) {
+    res.status(404).send("Inconsistencia el usuario se encuentra repetido");
+  } else {
+    if (customer.length == 0) {
+      res
+        .status(404)
+        .send("El Usuario Buscado no se encuentra en nestros registros");
+    } else {
+      const transac = await transactions.getAllTransactionsByAcounts(
+        customer[0].accounts
+      );
+
+      res.json(transac);
+    }
+  }
 });
 
 module.exports = router;

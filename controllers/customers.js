@@ -8,6 +8,10 @@ async function getCustommerByEmail(email) {
   return movies.getCustommerByEmail(email);
 }
 
+async function getCustommerByName(name) {
+  return movies.getCustommerByName(name);
+}
+
 async function moreAccountsThan(acountCount) {
   return movies.moreAccountsThan(acountCount);
 }
@@ -21,4 +25,5 @@ module.exports = {
   getCustommerByEmail,
   moreAccountsThan,
   getClientsByLimit,
+  getCustommerByName,
 };
