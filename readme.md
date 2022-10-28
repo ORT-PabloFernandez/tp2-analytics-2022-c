@@ -40,12 +40,12 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 -GET /api/customers?pageSize=[pageSize]&page=[page]
 
-Agrego nuevos end points y sus descripcines
+Agrego nuevos end points y sus descripciones
 > 1. -GET /api/customers/?email=[email]
 > 2. -GET /api/customers/more_accounts/[numero].  //Esta dinamico por si en el futuro se precisa obtener clientes con mas o menos cuentas
 > 3. -GET /api/accounts/?limit=[limite]   //Esta dinamico por si en el futuro se precisa obtener cuentas con mas o menos limite
 > 4. -GET /api/customers/acount_limit/?limit=[limite] //Esta dinamico por si en el futuro se precisa obtener clientes con cuentas con mas o menos limite
-> 5. -GET /api/customers/transactions_by_name/[nombre] //Esta dinamico por si en el futuro se precisa obtener transacciones de distintos clientes ademas se detecto usuarios con el mismo nombre por lo cual se le agrego un pequeño manejo de error para avisar de esto se recomienda cambiar a tomarlos por ID para evitar este problema
+> 5. -GET /api/customers/transactions_by_name/[nombre] //Esta dinamico por si en el futuro se precisa obtener transacciones de distintos clientes ademas se detecto usuarios con el mismo nombre por lo cual se le agrego un pequeño manejo de error para avisar de esto se recomienda cambiar a tomarlos por ID o username para evitar este problema
 
 
 
