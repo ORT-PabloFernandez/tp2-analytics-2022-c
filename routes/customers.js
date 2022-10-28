@@ -61,11 +61,11 @@ router.get("/transactions_by_name/:name", async (req, res) => {
   const customer = await controller.getCustommerByName(nameRemplace);
 
   if (customer.length > 1) {
-    res.status(404).send("Inconsistencia el usuario se encuentra repetido");
+    res.status(418).send("Inconsistencia el usuario se encuentra repetido");
   } else {
     if (customer.length == 0) {
       res
-        .status(404)
+        .status(406)
         .send("El Usuario Buscado no se encuentra en nestros registros");
     } else {
       const transac = await transactions.getAllTransactionsByAcounts(
