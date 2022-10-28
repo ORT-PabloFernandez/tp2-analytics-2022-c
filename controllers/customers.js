@@ -1,7 +1,38 @@
-const movies = require('../data/customers');
+const customers = require('../data/customers');
 
 async function getAllCustomers(pageSize, page){    
-    return movies.getAllCustomers(pageSize, page);
+    return customers.getAllCustomers(pageSize, page);
 }
 
-module.exports = {getAllCustomers};
+async function getClienteEmail(email){
+    return customers.getClienteEmail(email);
+}
+
+ async function getClientesCuentas(){
+    return customers.getClientesCuentas(); 
+ }
+
+ async function getClientesCuentas(){
+    return customers.getClientesCuentas(); 
+ }
+
+ async function cuentasConLimite(){
+    return customers.cuentasConLimite(); 
+ }
+
+ async function clientesConLimite(){
+    return customers.clientesConLimite(); 
+ }
+
+ async function transaccionesClienteByNombre(){
+    return customers.transaccionesClienteByNombre(); 
+ }
+
+module.exports = {
+    getAllCustomers,
+    getClienteEmail,
+    getClientesCuentas,
+    cuentasConLimite,
+    clientesConLimite,
+    transaccionesClienteByNombre,
+};
