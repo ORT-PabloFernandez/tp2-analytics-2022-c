@@ -58,7 +58,7 @@ async function getCustomersAcounts10k() {
       .find({ accounts: { $in: [accounts10k[index].account_id] } })
       .toArray();
     customersAcounts10k.push(customer);
-    console.log(customer);
+    // console.log(customer);
   }
 
   return customersAcounts10k;
