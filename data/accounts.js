@@ -1,25 +1,25 @@
 const { ObjectId } = require('mongodb');
 const conn = require('./conn');
 const DATABASE = 'sample_analytics';
-const CUSTOMERS = 'customers';
+const ACCOUNTS = 'accounts';
 
-async function getAllCustomers(pageSize, page){
+async function getAllAccounts(pageSize, page){
     const connectiondb = await conn.getConnection();
-    const customers = await connectiondb
+    const accounts = await connectiondb
                         .db(DATABASE)
-                        .collection(CUSTOMERS)
+                        .collection(ACCOUNTS)
                         .find({}).limit(pageSize).skip(pageSize * page)
                         .toArray();    
-    return customers;
+    return accounts;
 }
 
-async function getCustomer(id){
+async function getAccount(id){
     const connectiondb = await conn.getConnection();
-    const customer = await connectiondb
+    const account = await connectiondb
                         .db(DATABASE)
-                        .collection(CUSTOMERS)
+                        .collection(ACCOUNTS)
                         .findOne({_id:new ObjectId(id)});    
-    return customer;
+    return account;
 }
 
-module.exports = {getAllCustomers, getCustomer};
+module.exports = {getAllAccounts, getAccount};
