@@ -24,7 +24,7 @@ async function getCustomer(id){
 
 async function findCustomerByEmail(email){
     try {
-        console.log("Buscando cliente con email:", email); // Log de depuración
+        console.log("Buscando cliente con email:", email);
 
         const connectiondb = await conn.getConnection();
         if (!connectiondb) {
@@ -38,7 +38,7 @@ async function findCustomerByEmail(email){
             .findOne({ email: email });
 
         if (!customer) {
-            console.log("Cliente no encontrado para el email:", email); // Log de depuración
+            console.log("Cliente no encontrado para el email:", email); 
         }
 
         return customer;
@@ -49,4 +49,21 @@ async function findCustomerByEmail(email){
     }
 }
 
-module.exports = {getAllCustomers, getCustomer, findCustomerByEmail};
+async function getCustomersWithAccounts(){
+    const connectiondb = await conn.getConnection();
+    try {
+        const customers = await connectiondb
+        .db(DATABASE)
+        .collection(CUSTOMERS)
+        .find({
+        'accounts.3': {$exists: true}
+        })
+        .toArray();
+
+        return customers;
+    } catch (error) {
+        console.error("No se encontro custumers con accounts:", error);
+    }
+}
+
+module.exports = {getAllCustomers, getCustomer, findCustomerByEmail, getCustomersWithAccounts};
