@@ -22,4 +22,31 @@ async function getCustomer(id){
     return customer;
 }
 
-module.exports = {getAllCustomers, getCustomer};
+async function findCustomerByEmail(email){
+    try {
+        console.log("Buscando cliente con email:", email); // Log de depuración
+
+        const connectiondb = await conn.getConnection();
+        if (!connectiondb) {
+            console.error("No se pudo establecer una conexión con la base de datos");
+            return null;
+        }
+
+        const customer = await connectiondb
+            .db(DATABASE)
+            .collection(CUSTOMERS)
+            .findOne({ email: email });
+
+        if (!customer) {
+            console.log("Cliente no encontrado para el email:", email); // Log de depuración
+        }
+
+        return customer;
+
+    } catch (error) {
+        console.error("Error al buscar el cliente por email:", error);
+        throw error;
+    }
+}
+
+module.exports = {getAllCustomers, getCustomer, findCustomerByEmail};

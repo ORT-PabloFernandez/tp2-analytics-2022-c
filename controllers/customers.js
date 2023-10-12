@@ -8,4 +8,8 @@ async function getCustomer(id){
     return customers.getCustomer(id);
 }
 
-module.exports = {getAllCustomers, getCustomer};
+async function findCustomerByEmail(email) {
+    return customers.findCustomerByEmail(email);
+}
+
+module.exports = {getAllCustomers, getCustomer, findCustomerByEmail};

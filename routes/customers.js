@@ -9,9 +9,12 @@ router.get('/', async (req, res) => {
     res.json(await controller.getAllCustomers(pageSize, page));
 });
 
+router.get('/email/:email', async (req, res) => {
+    res.json(await controller.findCustomerByEmail(req.params.email));
+});
+
 router.get('/:id', async (req, res) => {
     res.json(await controller.getCustomer(req.params.id));
 });
-
 
 module.exports = router;
