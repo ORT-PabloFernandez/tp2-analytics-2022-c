@@ -13,7 +13,7 @@ router.get('/accountLimit10000', async (req,res)=>{
     res.json(await controller.getAccountLimit10000());
 });
 
-router.get('/getAccountByAccountId', async (req,res)=>{
+router.get('/getAccountByAccountId/:account_id', async (req,res)=>{
     const id = req.params.account_id;
     res.json(await controller.getAccountByAccountId(id));
 });
