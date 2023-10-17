@@ -46,6 +46,35 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 -GET /api/accounts/:id
 
+//AGREGADOS EN LA RESOLUCION DE EJERCICIOS:
+
+// routes/customers.js :
+
+-GET /searchEmail
+
+-GET /customer4AccountsOrMore
+
+-GET /customersAccountLimit10000
+
+-GET /customersByName/:name
+
+
+// routes/accounts.js:
+
+-GET /accountLimit10000'
+
+-GET /accountByAccountId/:account_id
+
+
+// routes/transactions.js :
+
+-GET /
+
+-GET /transactionByAccountId/:account_id
+
+-GET /:id
+
+-GET /customerTransactionsByName/:name
 
 
 
