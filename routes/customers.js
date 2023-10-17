@@ -15,12 +15,16 @@ router.get('/searchEmail', async (req, res)=>{
     res.json(await controller.getCustomerByEmail(email));
 });
 
-router.get('/getCustomer4AccountsOrMore', async (req,res)=>{
+router.get('/customer4AccountsOrMore', async (req,res)=>{
     res.json(await controller.getCustomer4AccountsOrMore());
 });
 
-router.get('/getCustomersAccountLimit10000', async (req, res)=>{
+router.get('/customersAccountLimit10000', async (req, res)=>{
     res.json(await controller.getCustomersAccountLimit10000());
+});
+
+router.get('/customersByName/:name', async (req, res)=>{
+    res.json(await controller.getCustomersByName(req.params.name));
 });
 
 router.get('/:id', async (req, res) => {

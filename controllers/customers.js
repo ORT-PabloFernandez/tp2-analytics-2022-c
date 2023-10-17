@@ -20,4 +20,15 @@ async function getCustomersAccountLimit10000(){
     return customers.getCustomersAccountLimit10000();
 }
 
-module.exports = {getAllCustomers, getCustomer, getCustomerByEmail,getCustomer4AccountsOrMore,getCustomersAccountLimit10000};
+async function getCustomersByName(name){
+    return customers.getCustomersByName(name);
+}
+
+module.exports = {
+                 getAllCustomers, 
+                 getCustomer, 
+                 getCustomerByEmail,
+                 getCustomer4AccountsOrMore,
+                 getCustomersAccountLimit10000,
+                 getCustomersByName
+};

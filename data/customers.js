@@ -58,4 +58,21 @@ async function getCustomersAccountLimit10000(){
     return customer;
 }
 
-module.exports = {getAllCustomers, getCustomer, getCustomerByEmail,getCustomer4AccountsOrMore, getCustomersAccountLimit10000};
+async function getCustomersByName(name){
+    const connectiondb = await conn.getConnection();
+    const customers = await connectiondb
+                        .db(DATABASE)
+                        .collection(CUSTOMERS)
+                        .find({name})
+                        .toArray();
+    return customers;
+}
+
+module.exports = {
+    getAllCustomers,
+    getCustomer, 
+    getCustomerByEmail,
+    getCustomer4AccountsOrMore, 
+    getCustomersAccountLimit10000,
+    getCustomersByName
+};
