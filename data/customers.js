@@ -66,4 +66,27 @@ async function getCustomersWithAccounts(){
     }
 }
 
-module.exports = {getAllCustomers, getCustomer, findCustomerByEmail, getCustomersWithAccounts};
+async function getCustomersWithAccountLimit(){
+    const connectiondb = await conn.getConnection();
+    try {
+        console.log("Buscando Customers...");
+
+        const customers2 = await connectiondb.db(DATABASE).collection('accounts')
+            .aggregate([
+                {$match: {limit: 10000}},
+                {$lookup: {
+                    from: "customers",
+                    localField: "account_id",
+                    foreignField: "accounts",
+                    as: "acc"
+                }},
+                {$unwind: "$acc"}
+            ]).toArray()
+
+        return customers2;
+    } catch (error) {   
+        console.error("No se encontro custumers con accounts de limite 10000:", error);
+    }
+}
+
+module.exports = {getAllCustomers, getCustomer, findCustomerByEmail, getCustomersWithAccounts, getCustomersWithAccountLimit};
