@@ -12,7 +12,7 @@ async function getAllCustomers(pageSize, page){
                         .toArray();    
     return customers;
 }
-
+ 
 async function getCustomer(id){
     const connectiondb = await conn.getConnection();
     const customer = await connectiondb

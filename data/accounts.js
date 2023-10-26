@@ -13,7 +13,7 @@ async function getAllAccounts(pageSize, page){
     return accounts;
 }
 
-async function getAccount(id){
+async function getAccount(id){ 
     const connectiondb = await conn.getConnection();
     const account = await connectiondb
                         .db(DATABASE)

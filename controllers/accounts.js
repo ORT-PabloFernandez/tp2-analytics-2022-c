@@ -9,7 +9,7 @@ async function getAccount(id){
 }
 
 async function getAccountsWithLimitAmount(){
-    return accounts.getAccountsWithLimitAmount();
+    return accounts.getAccountsWithLimitAmount(); 
 }
 
 module.exports = {getAllAccounts, getAccount, getAccountsWithLimitAmount};

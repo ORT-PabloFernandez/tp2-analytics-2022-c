@@ -7,7 +7,7 @@ Luego de abrir el correo encuentras un mail de tu Líder Técnico con tu primera
 
 > Bienvenid@! estuvimos esperando por horas que llegaras, tenemos varias tareas criticas y prioritarias en nuestro backlog. Por favor presta mucha atención a las instrucciones. No dudes en preguntarme cualquier cosa, aunque generalmente estoy muy ocupado resolviendo problemas heredados de las rotaciones de los desarrolladores.
 
-> En el presente repositorío encontrarás un proyecto de nodejs que ya tiene codigo base del backend con el que vamos a trabajar. Te aconsejo que sigas los siguientes pasos para armar tu entorno de trabajo. 
+> En el presente repositorío encontrarás un proyecto de nodejs que ya tiene codigo base del backend con el que vamos a trabajar. Te aconsejo  que sigas los siguientes pasos para armar tu entorno de trabajo. 
 
 > 1. Realizar un Fork del presente repositorio
 > 2. Realizar un clone del presente repositorio

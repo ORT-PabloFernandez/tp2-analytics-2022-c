@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 
 router.get('/email/:email', async (req, res) => {
     res.json(await controller.findCustomerByEmail(req.params.email));
-});
+}); 
 
 router.get('/customers-with-accounts', async (req, res) => {
     res.json(await controller.getCustomersWithAccounts());

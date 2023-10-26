@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 router.get('/accounts-with-limit', async (req, res) => {
     res.json(await controller.getAccountsWithLimitAmount());
 });
-
+ 
 router.get('/:id', async (req, res) => {
     res.json(await controller.getAccount(req.params.id));
 });

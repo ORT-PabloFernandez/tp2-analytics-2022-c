@@ -7,7 +7,7 @@ async function getAllCustomers(pageSize, page){
 async function getCustomer(id){
     return customers.getCustomer(id);
 }
-
+ 
 async function findCustomerByEmail(email) {
     return customers.findCustomerByEmail(email);
 }
