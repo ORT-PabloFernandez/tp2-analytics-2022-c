@@ -25,4 +25,4 @@ router.get('/:id', async (req, res) => {
     res.json(await controller.getCustomer(req.params.id));
 });
 
-module.exports = router;
+module.exports = router; 
