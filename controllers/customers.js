@@ -15,4 +15,8 @@ async function getCustomerByEmail(email) {
 async function getAllCustomersWminAccounts(minAccountCount) {
   return customers.getAllCustomersWminAccounts(minAccountCount);
 }
-module.exports = { getAllCustomers, getCustomer, getCustomerByEmail, getAllCustomersWminAccounts };
+
+async function getAllCustomersAccountLimit10000(){
+  return customers.getAllCustomersAccountLimit10000();
+}
+module.exports = { getAllCustomers, getCustomer, getCustomerByEmail, getAllCustomersWminAccounts, getAllCustomersAccountLimit10000 };

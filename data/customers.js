@@ -2,6 +2,7 @@ const { ObjectId } = require("mongodb");
 const conn = require("./conn");
 const DATABASE = "sample_analytics";
 const CUSTOMERS = "customers";
+const { getAccountWLimit } = require("../controllers/accounts");
 
 async function getAllCustomers(pageSize, page) {
   const connectiondb = await conn.getConnection();
@@ -44,4 +45,22 @@ async function getAllCustomersWminAccounts(minAccountCount) {
   }
 }
 
-module.exports = { getAllCustomers, getCustomer, getCustomerByEmail, getAllCustomersWminAccounts };
+async function getAllCustomersAccountLimit10000() {
+  const connectiondb = await conn.getConnection();
+  const accounts = await getAccountWLimit();
+  const idAccounts = accounts.map((account) => account.account_id);
+  const customer = await connectiondb
+    .db(DATABASE)
+    .collection(CUSTOMERS)
+    .find({ accounts: { $in: idAccounts } })
+    .toArray();
+  return customer;
+}
+
+module.exports = {
+  getAllCustomers,
+  getCustomer,
+  getCustomerByEmail,
+  getAllCustomersWminAccounts,
+  getAllCustomersAccountLimit10000,
+};
