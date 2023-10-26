@@ -9,6 +9,10 @@ router.get('/', async (req, res) => {
     res.json(await controller.getAllAccounts(pageSize, page));
 });
 
+router.get('/limit',async (req,res)=>{
+    res.json(await controller.getAccountWLimit())
+});
+
 router.get('/:id', async (req, res) => {
     res.json(await controller.getAccount(req.params.id));
 });
