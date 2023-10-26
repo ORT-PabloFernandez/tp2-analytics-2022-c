@@ -16,7 +16,24 @@ async function getAllCustomersWminAccounts(minAccountCount) {
   return customers.getAllCustomersWminAccounts(minAccountCount);
 }
 
-async function getAllCustomersAccountLimit10000(){
+async function getAllCustomersAccountLimit10000() {
   return customers.getAllCustomersAccountLimit10000();
 }
-module.exports = { getAllCustomers, getCustomer, getCustomerByEmail, getAllCustomersWminAccounts, getAllCustomersAccountLimit10000 };
+
+async function getCustomersByName(name) {
+  return customers.getCustomersByName(name);
+}
+
+async function getCusterAccount(acc_id) {
+  return customers.getCusterAccount(acc_id);
+}
+
+module.exports = {
+  getAllCustomers,
+  getCustomer,
+  getCustomerByEmail,
+  getAllCustomersWminAccounts,
+  getAllCustomersAccountLimit10000,
+  getCustomersByName,
+  getCusterAccount,
+};

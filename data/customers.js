@@ -2,7 +2,8 @@ const { ObjectId } = require("mongodb");
 const conn = require("./conn");
 const DATABASE = "sample_analytics";
 const CUSTOMERS = "customers";
-const { getAccountWLimit } = require("../controllers/accounts");
+const { getAccountWLimit, getAccountByAccountID } = require("../controllers/accounts");
+const { getTransactionByaccountID } = require("../controllers/transactions")
 
 async function getAllCustomers(pageSize, page) {
   const connectiondb = await conn.getConnection();
@@ -57,10 +58,29 @@ async function getAllCustomersAccountLimit10000() {
   return customer;
 }
 
+async function getCustomersByName(name) {
+  const connectiondb = await conn.getConnection();
+  const customer = await connectiondb.db(DATABASE).collection(CUSTOMERS).findOne({ name: name });
+  return customer;
+}
+
+async function getCusterAccount(name) {
+  const customer = await getCustomersByName(name);
+  const accountsPromises = await customer.accounts.map((account) => getAccountByAccountID(account));
+  // el PRMOISE lo que hace es esperar a que todas las request del await carguen.
+  //si no usas esto cuando usas el map t epuede tirar nulo
+  const accounts = await Promise.all(accountsPromises);
+  const transactionsPromises = await accounts.map((account)=> getTransactionByaccountID(account.account_id));
+  const transactions = await Promise.all(transactionsPromises);
+  return transactions;
+}
+
 module.exports = {
   getAllCustomers,
   getCustomer,
   getCustomerByEmail,
   getAllCustomersWminAccounts,
   getAllCustomersAccountLimit10000,
+  getCustomersByName,
+  getCusterAccount,
 };

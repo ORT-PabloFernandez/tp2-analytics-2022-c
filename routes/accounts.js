@@ -17,5 +17,9 @@ router.get('/:id', async (req, res) => {
     res.json(await controller.getAccount(req.params.id));
 });
 
+router.get('/account_id/:acc_id', async (req, res) => {
+    res.json(await controller.getAccountByAccountID(parseInt(req.params.acc_id)));
+});
+
 
 module.exports = router;

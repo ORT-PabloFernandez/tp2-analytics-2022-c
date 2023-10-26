@@ -12,4 +12,7 @@ async function getAccountWLimit() {
   return accounts.getAccountWLimit();
 }
 
-module.exports = { getAllAccounts, getAccount, getAccountWLimit };
+async function getAccountByAccountID(acc_id) {
+  return accounts.getAccountByAccountID(acc_id);
+}
+module.exports = { getAllAccounts, getAccount, getAccountWLimit , getAccountByAccountID };
