@@ -15,7 +15,11 @@ router.get("/:id", async (req, res) => {
 
 // Ruta para buscar un cliente por correo electrónico
 router.get("/email/:email", async (req, res) => {
-    res.json(await controller.getCustomerByEmail(req.params.email));
-  });
+  res.json(await controller.getCustomerByEmail(req.params.email));
+});
+
+router.get("/accounts/:acc",async (req,res)=>{
+  res.json(await controller.getAllCustomersWminAccounts(req.params.acc))
+})
 
 module.exports = router;

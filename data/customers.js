@@ -26,11 +26,22 @@ async function getCustomer(id) {
 
 async function getCustomerByEmail(email) {
   const connectiondb = await conn.getConnection();
-  const customer = await connectiondb
-  .db(DATABASE)
-  .collection(CUSTOMERS)
-  .findOne({ email: email });
+  const customer = await connectiondb.db(DATABASE).collection(CUSTOMERS).findOne({ email: email });
   return customer;
 }
 
-module.exports = { getAllCustomers, getCustomer, getCustomerByEmail };
+async function getAllCustomersWminAccounts(minAccountCount) {
+  const connectiondb = await conn.getConnection();
+  try {
+    const customer = await connectiondb
+      .db(DATABASE)
+      .collection(CUSTOMERS)
+      .find({ $expr: { $gte: [{ $size: "$accounts" }, parseInt(minAccountCount)] } })
+      .toArray();
+    return customer;
+  } catch (error) {
+    console.error("No se encontraron clientes con cuentas:", error);
+  }
+}
+
+module.exports = { getAllCustomers, getCustomer, getCustomerByEmail, getAllCustomersWminAccounts };

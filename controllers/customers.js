@@ -12,4 +12,7 @@ async function getCustomerByEmail(email) {
   return customers.getCustomerByEmail(email);
 }
 
-module.exports = { getAllCustomers, getCustomer, getCustomerByEmail};
+async function getAllCustomersWminAccounts(minAccountCount) {
+  return customers.getAllCustomersWminAccounts(minAccountCount);
+}
+module.exports = { getAllCustomers, getCustomer, getCustomerByEmail, getAllCustomersWminAccounts };
